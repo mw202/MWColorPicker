@@ -1,0 +1,16 @@
+PODS:
+  - MWColorPicker (0.8.0)
+
+DEPENDENCIES:
+  - MWColorPicker (from `../`)
+
+EXTERNAL SOURCES:
+  MWColorPicker:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  MWColorPicker: dde27a03f2122ed3db3038e111125331ebffd1d5
+
+PODFILE CHECKSUM: 270e809d205349fbae1df75245bd191196923ba9
+
+COCOAPODS: 1.15.2

@@ -8,8 +8,8 @@
 
 Pod::Spec.new do |s|
   s.name             = 'MWColorPicker'
-  s.version          = '0.1.0'
-  s.summary          = 'A short description of MWColorPicker.'
+  s.version          = '0.8.0'
+  s.summary          = 'A color picker.'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -21,7 +21,7 @@ Pod::Spec.new do |s|
 TODO: Add long description of the pod here.
                        DESC
 
-  s.homepage         = 'https://github.com/mw202/MWColorPicker'
+  s.homepage         = 'https://github.com/mw202'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'mw202' => '250230331@qq.com' }
@@ -29,12 +29,14 @@ TODO: Add long description of the pod here.
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '10.0'
+  s.swift_version = "4.0"
 
   s.source_files = 'MWColorPicker/Classes/**/*'
   
-  # s.resource_bundles = {
-  #   'MWColorPicker' => ['MWColorPicker/Assets/*.png']
-  # }
+  s.resource_bundles = {
+    'MWColorPicker' => ['MWColorPicker/Assets/*.plist'],
+    'MWColorPickerImages' => ['MWColorPicker/Assets/*.xcassets']
+  }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'

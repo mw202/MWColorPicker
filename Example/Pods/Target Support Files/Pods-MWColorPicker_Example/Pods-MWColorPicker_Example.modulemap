@@ -1,0 +1,6 @@
+framework module Pods_MWColorPicker_Example {
+  umbrella header "Pods-MWColorPicker_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}
