@@ -9,7 +9,7 @@
 
 swift颜色选择器
 
-[screenshot1.png](\docs\screenshot1.png)
+[screenshot1.png](/docs/screenshot1.png)
 
 ## 使用
 
