@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # MWColorPicker
 
 [![CI Status](https://img.shields.io/travis/mw202/MWColorPicker.svg?style=flat)](https://travis-ci.org/mw202/MWColorPicker)
@@ -27,3 +28,6 @@ mw202, 250230331@qq.com
 ## License
 
 MWColorPicker is available under the MIT license. See the LICENSE file for more info.
+=======
+# MWColorPicker
+>>>>>>> 86885361dfeb967bee1732a1ad92b02001aff3f9
