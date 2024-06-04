@@ -31,17 +31,9 @@ func colorPickerView(_ view: MWColorPickerView, didSelectAt index: Int, color: S
 func bindBlock(selected index: Int, block: Block? = nil)
 ```
 
-## Example
-
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
-
-## Requirements
-
 ## Installation
 
-MWColorPicker is available through [CocoaPods](https://cocoapods.org). To install
-
-it, simply add the following line to your Podfile:
+MWColorPicker is available through [CocoaPods](https://cocoapods.org). To install it, simply add the following line to your Podfile:
 
 ```ruby
 pod 'MWColorPicker'
