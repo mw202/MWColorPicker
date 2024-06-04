@@ -9,23 +9,23 @@
 
 swift颜色选择器
 
-[screenshot1.png](/docs/screenshot1.png)
+<img src="/docs/screenshot1.png" width="50%" height="50%">
 
 ## 使用
 
-使用dataSource设置选中状态。如果返回nil，不会显示选中状态
+* 使用dataSource设置选中状态。如果返回nil，不会显示选中状态
 
 ```swift
 func colorPickerViewShowSelectBox(_ view: MWColorPickerView) -> MWColorPickerSelectBoxStyle?
 ```
 
-使用delegate获取选中项。color返回字符串形式的十六进制颜色值，如 `000FFF`
+* 使用delegate获取选中项。color返回字符串形式的十六进制颜色值，如 `000FFF`
 
 ```swift
 func colorPickerView(_ view: MWColorPickerView, didSelectAt index: Int, color: String)
 ```
 
-或者使用Block
+* 或者使用Block
 
 ```swift
 func bindBlock(selected index: Int, block: Block? = nil)
