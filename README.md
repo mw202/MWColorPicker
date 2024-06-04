@@ -9,7 +9,7 @@
 
 swift颜色选择器
 
-[screenshot1.png](/docs/screenshot1.png)
+<img src="/docs/screenshot1.png" width="50%" height="50%">
 
 ## 使用
 
