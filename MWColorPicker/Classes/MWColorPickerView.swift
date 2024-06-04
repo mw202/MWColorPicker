@@ -27,7 +27,7 @@ public protocol MWColorPickerViewDelegate: NSObjectProtocol {
 // MARK: -
 
 public class MWColorPickerView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-    public typealias Block = (_ view: MWColorPickerView, _ selected: Int) -> Void
+    public typealias Block = (_ view: MWColorPickerView, _ selected: Int, _ color: String) -> Void
     
     public weak var dataSource: MWColorPickerViewDataSource?
     public weak var delegate: MWColorPickerViewDelegate?
@@ -124,9 +124,10 @@ public class MWColorPickerView: UIView, UICollectionViewDataSource, UICollection
         
         collectionView.reloadData()
         
-        delegate?.colorPickerView(self, didSelectAt: indexPath.row, color: _datas?[indexPath.row] ?? "#")
+        let c = _datas?[indexPath.row] ?? "#"
+        delegate?.colorPickerView(self, didSelectAt: indexPath.row, color: c)
         
-        _block?(self, indexPath.row)
+        _block?(self, indexPath.row, c)
     }
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
