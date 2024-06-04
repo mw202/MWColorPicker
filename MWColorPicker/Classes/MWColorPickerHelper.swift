@@ -105,10 +105,10 @@ extension Bundle {
 }
 
 extension UIImage {
-    static func resourceUrl(forClass className: AnyClass,
-                            forBundle bundleName: String,
-                            forResource name: String,
-                            withExtension ext: String) -> UIImage? {
+    static func resource(forClass className: AnyClass,
+                         forBundle bundleName: String,
+                         forResource name: String,
+                         withExtension ext: String) -> UIImage? {
         
         var bundle: Bundle? = Bundle.main
         if let url = Bundle(for: className).url(forResource: bundleName, withExtension: "bundle") {

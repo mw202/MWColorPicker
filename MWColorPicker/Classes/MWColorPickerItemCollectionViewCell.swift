@@ -57,7 +57,7 @@ public class MWColorPickerItemCollectionViewCell: UICollectionViewCell {
             imageViewCheck.image = nil
             if selected {
                 var image: UIImage? = box?.icon
-                image = box?.icon ?? UIImage.resourceUrl(forClass: MWColorPickerView.self, forBundle: "MWColorPickerImages", forResource: "check", withExtension: "")
+                image = box?.icon ?? UIImage.resource(forClass: MWColorPickerView.self, forBundle: "MWColorPickerImages", forResource: "check", withExtension: "")
                 
                 var _color = UIColor.white
                 switch bx.iconColor {

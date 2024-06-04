@@ -21,6 +21,7 @@ public protocol MWColorPickerViewDelegate: NSObjectProtocol {
     /// - Parameters:
     ///   - view: MWColorPickerView
     ///   - didSelectAt: Int
+    ///   - color: String
     func colorPickerView(_ view: MWColorPickerView, didSelectAt index: Int, color: String)
 }
 
@@ -36,6 +37,7 @@ public class MWColorPickerView: UIView, UICollectionViewDataSource, UICollection
     
     private var _datas: [String]? = []
     public private (set) var selectedIndex: Int = -1
+    public private (set) var selectedColor: String?
     private var _block: Block?
     
     private lazy var collectionView: UICollectionView! = {
@@ -124,10 +126,10 @@ public class MWColorPickerView: UIView, UICollectionViewDataSource, UICollection
         
         collectionView.reloadData()
         
-        let c = _datas?[indexPath.row] ?? "#"
-        delegate?.colorPickerView(self, didSelectAt: indexPath.row, color: c)
+        selectedColor = _datas?[indexPath.row] ?? "#"
+        delegate?.colorPickerView(self, didSelectAt: indexPath.row, color: selectedColor!)
         
-        _block?(self, indexPath.row, c)
+        _block?(self, indexPath.row, selectedColor!)
     }
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
