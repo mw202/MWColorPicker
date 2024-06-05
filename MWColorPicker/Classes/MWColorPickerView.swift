@@ -30,14 +30,25 @@ public protocol MWColorPickerViewDelegate: NSObjectProtocol {
 public class MWColorPickerView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     public typealias Block = (_ view: MWColorPickerView, _ selected: Int, _ color: String) -> Void
     
-    public weak var dataSource: MWColorPickerViewDataSource?
+    // Public
+    public weak var dataSource: MWColorPickerViewDataSource? {
+        didSet {
+            style = style ?? dataSource?.colorPickerViewShowSelectBox(self)
+        }
+    }
     public weak var delegate: MWColorPickerViewDelegate?
     
-    private let column: CGFloat = 10
+    public var selectedColor: String? {
+        didSet {
+            _selectedIndex = _datas?.firstIndex(of: selectedColor ?? "#") ?? -1
+        }
+    }
+    public var style: MWColorPickerSelectBoxStyle?
     
+    //
+    private let column: CGFloat = 10
     private var _datas: [String]? = []
-    public private (set) var selectedIndex: Int = -1
-    public private (set) var selectedColor: String?
+    private var _selectedIndex: Int = -1
     private var _block: Block?
     
     private lazy var collectionView: UICollectionView! = {
@@ -91,8 +102,12 @@ public class MWColorPickerView: UIView, UICollectionViewDataSource, UICollection
         addSubview(collectionView)
     }
     
-    public func bindBlock(selected index: Int, block: Block? = nil) {
-        selectedIndex = index
+    public func bindBlock(selected color: String, block: Block? = nil) {
+        var c = color
+        if c.hasPrefix("#") {
+            c.remove(at: c.startIndex)
+        }
+        selectedColor = c
         _block = block
     }
     
@@ -109,9 +124,10 @@ public class MWColorPickerView: UIView, UICollectionViewDataSource, UICollection
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MWColorPickerItemCollectionViewCell.cellIdentifier, for: indexPath) as? MWColorPickerItemCollectionViewCell {
-            let selected = indexPath.row == selectedIndex
-            let style = dataSource?.colorPickerViewShowSelectBox(self)
-            cell.setCell(UIColor.hex(_datas?[indexPath.row] ?? "#"), selected, style)
+            
+            cell.setCell(UIColor.hex(_datas?[indexPath.row] ?? "#"),
+                         (indexPath.row == _selectedIndex),
+                         style)
             return cell
         }
         return UICollectionViewCell()
@@ -122,7 +138,7 @@ public class MWColorPickerView: UIView, UICollectionViewDataSource, UICollection
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: false)
         
-        selectedIndex = indexPath.row
+        _selectedIndex = indexPath.row
         
         collectionView.reloadData()
         

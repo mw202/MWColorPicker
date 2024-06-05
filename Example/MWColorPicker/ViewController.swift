@@ -20,13 +20,16 @@ class ViewController: UIViewController, MWColorPickerViewDataSource, MWColorPick
         // Do any additional setup after loading the view, typically from a nib.
         
         let picker = MWColorPickerView()
+        picker.selectedColor = "9bff38"
         picker.frame = CGRect(x: 100, y: 100, width: 200, height: 300)
         picker.dataSource = self
         picker.delegate = self
         view.addSubview(picker)
         
-        picker2.dataSource = self
-        picker2.delegate = self
+        picker2.style = MWColorPickerSelectBoxStyle.default
+        picker2.bindBlock(selected: "000000") { (view, index, color) in
+            print("selected(\(index)): \(color)")
+        }
     }
     
     override func viewDidLayoutSubviews() {
