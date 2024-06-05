@@ -38,9 +38,22 @@ public class MWColorPickerView: UIView, UICollectionViewDataSource, UICollection
     }
     public weak var delegate: MWColorPickerViewDelegate?
     
+    private var _selectedColor: String?
     public var selectedColor: String? {
-        didSet {
-            _selectedIndex = _datas?.firstIndex(of: selectedColor ?? "#") ?? -1
+        get {
+            if let value = _selectedColor, value.hasPrefix("#") {
+                _selectedColor?.remove(at: value.startIndex)
+            }
+            
+            return _selectedColor?.lowercased()
+        }
+        set {
+            _selectedColor = newValue
+            let index = _datas?.firstIndex(of: selectedColor ?? "#") ?? -1
+            if _selectedIndex != index {
+                _selectedIndex = index
+                collectionView.reloadData()
+            }
         }
     }
     public var style: MWColorPickerSelectBoxStyle?
