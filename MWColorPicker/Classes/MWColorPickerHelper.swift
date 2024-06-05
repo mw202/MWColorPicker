@@ -8,12 +8,12 @@
 import UIKit
 
 public struct MWColorPickerSelectBoxStyle {
-    public enum BorderColor {
+    public enum IconTintColor {
         case auto
         case color(UIColor)
     }
     public var icon: UIImage?
-    public var iconColor: BorderColor = .auto
+    public var iconTintColor: IconTintColor = .auto
     public var cornerRadius: CGFloat = 0
     public static let `default` = MWColorPickerSelectBoxStyle()
 }

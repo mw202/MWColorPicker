@@ -60,7 +60,7 @@ public class MWColorPickerItemCollectionViewCell: UICollectionViewCell {
                 image = box?.icon ?? UIImage.resource(forClass: MWColorPickerView.self, forBundle: "MWColorPickerImages", forResource: "check", withExtension: "")
                 
                 var _color = UIColor.white
-                switch bx.iconColor {
+                switch bx.iconTintColor {
                 case .auto:
                     if (color?.isLight ?? false) {
                         _color = .black
